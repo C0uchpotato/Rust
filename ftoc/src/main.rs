@@ -1,11 +1,10 @@
-use std::io;
+use std::io::stdin;
 fn main() {
     println!("Please input the temp in C");
-    //let index : u32 = 15;
     let mut s = String::new();
-    io::stdin().read_line(&mut s).unwrap();
+    stdin().read_line(&mut s).unwrap();
 
-    match s.trim_right().parse::<u32>() {
+    match s.trim().parse::<u32>() {
         Ok(_i) => println!("Good input"),
         Err(_) => println!("Invalid number."),
     }
