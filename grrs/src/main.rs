@@ -22,10 +22,10 @@ fn main() {
     }
 
     let result = std::fs::read_to_string("test.txt");
-    match result {
+    let content = match result {
         Ok(content) => { println!("File content: {}", content); }
         Err(error) => { println!("Oh noes: {}", error); }
-    }
+    };
     
 
 }
