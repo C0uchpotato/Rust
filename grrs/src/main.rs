@@ -11,21 +11,13 @@ struct Cli {
     path: std::path::PathBuf,
 }
 
-fn main() {
-    let args = Cli::parse();
-    let content = std::fs::read_to_string(&args.path).expect("could not read file");
-    
-    for line in content.lines() {
-        if line.contains(&args.pattern) {
-            println!("{}", line);
-        }
-    }
 
+fn main() -> Result<(), Box<dyn std::error::Error>> {
     let result = std::fs::read_to_string("test.txt");
     let content = match result {
-        Ok(content) => { println!("File content: {}", content); }
-        Err(error) => { println!("Oh noes: {}", error); }
+        Ok(content) => { content },
+        Err(error) => { return Err(error.into()); }
     };
-    
-
+    println!("file content: {}", content);
+    Ok(())
 }
