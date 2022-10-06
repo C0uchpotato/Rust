@@ -15,11 +15,10 @@ struct Cli {
 
 fn main() -> Result<()> {
     setup_panic!();
-    let path = "test.txt";
+    let path = ;
     let content = std::fs::read_to_string(path)
         .with_context(|| format!("could not read file `{}`", path))?;
     println!("file content: {}", content);
-    panic!("Complete");
     Ok(())
 }
 
