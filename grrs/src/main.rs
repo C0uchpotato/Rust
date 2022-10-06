@@ -1,4 +1,5 @@
 #![allow(unused)]
+use human_panic::setup_panic;
 use std::process::Command; // Run programs
 use clap::Parser;
 use anyhow::{Context, Result};
@@ -13,15 +14,14 @@ struct Cli {
 }
 
 fn main() -> Result<()> {
+    setup_panic!();
     let path = "test.txt";
     let content = std::fs::read_to_string(path)
         .with_context(|| format!("could not read file `{}`", path))?;
     println!("file content: {}", content);
+    panic!("Complete");
     Ok(())
 }
 
-
-
-//Testing
 
 
